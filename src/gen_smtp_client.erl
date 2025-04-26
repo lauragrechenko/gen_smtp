@@ -198,11 +198,13 @@ send(Email, Options, Callback) ->
 %% If it's using LMTP protocol, it will return a list with the delivery response for each address `[{"foo@bar.com", "250 ok"}, {"bar@foo.com", "452 <bar@foo.com> is temporarily over quota"}]`.
 %% the SMTP server's receipt or `{error, Type, Message}' or `{error, Reason}'.
 send_blocking(Email, Options) ->
+    io:format("[LAURA_IS_HERE] Options = ~p~n", [Options]),
     NewOptions = lists:ukeymerge(
         1,
         lists:sort(Options),
         lists:sort(?DEFAULT_OPTIONS)
     ),
+    io:format("[LAURA_IS_HERE] NewOptions = ~p~n", [NewOptions]),
     case check_options(NewOptions) of
         ok ->
             send_it(Email, NewOptions);
