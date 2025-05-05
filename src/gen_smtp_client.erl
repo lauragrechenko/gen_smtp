@@ -887,6 +887,7 @@ connect(Host, Options) ->
                     throw({permanent_failure, Msg})
             end;
         {error, Reason} ->
+            io:format("[LAURA_IS_HERE] Ssl connect failed, reason = ~p~n", [Reason]),
             throw({network_failure, {error, Reason}})
     end.
 
