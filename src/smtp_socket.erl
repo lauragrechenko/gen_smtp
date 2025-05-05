@@ -106,7 +106,7 @@ connect(Protocol, Address, Port, Opts) ->
 connect(tcp, Address, Port, Opts, Time) ->
     gen_tcp:connect(Address, Port, tcp_connect_options(Opts), Time);
 connect(ssl, Address, Port, Opts, Time) ->
-    io:format("[LAURA_IS_HERE] SMTP_SOCKET Options = ~p~n", [Options]),
+    io:format("[LAURA_IS_HERE] SMTP_SOCKET Options = ~p~n", [Opts]),
     ssl:connect(Address, Port, ssl_connect_options(Opts), Time).
 
 -spec listen(Protocol :: protocol(), Port :: pos_integer()) -> {ok, socket()} | {error, any()}.
